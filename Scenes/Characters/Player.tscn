@@ -17,3 +17,11 @@ texture = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1.34189, 1.6473 )
 shape = SubResource( 1 )
+
+[node name="JumpBuffer" type="Timer" parent="."]
+wait_time = 0.08
+one_shot = true
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
