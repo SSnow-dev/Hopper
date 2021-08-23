@@ -3,7 +3,7 @@ extends KinematicBody2D
 const MAX_SPEED = 225
 const FRICTION = 20
 const ACCELERATION = 30
-const GRAVITY = 50
+const GRAVITY = 40
 const UP = Vector2(0, -1)
 const JUMP_FORCE = 450
 
@@ -12,12 +12,16 @@ var is_jumping = false
 
 onready var jump_buffer = $JumpBuffer
 onready var coyote_timer = $CoyoteTimer
+onready var animated_sprite = $PlayerAnimatedSprite
+
+signal animate
 
 func _physics_process(delta):
 	if coyote_timer.is_stopped():
 		 apply_gravity()
 	handle_jumping()
 	handle_movement()
+	handle_animation()
 	
 func apply_gravity():
 	if is_on_floor() and velocity.y > 0:
@@ -53,3 +57,7 @@ func handle_jumping():
 			coyote_timer.stop()
 		else:
 			jump_buffer.start()
+			
+func handle_animation():
+	emit_signal("animate", velocity)
+
