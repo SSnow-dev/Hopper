@@ -26,5 +26,11 @@ wait_time = 0.1
 one_shot = true
 
 [node name="PlayerAnimatedSprite" parent="." instance=ExtResource( 1 )]
-frame = 1
+frame = 3
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -1, 0 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+smoothing_enabled = true
 [connection signal="animate" from="." to="PlayerAnimatedSprite" method="_on_Player_animate"]

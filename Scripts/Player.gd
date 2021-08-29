@@ -26,7 +26,9 @@ func _physics_process(delta):
 func apply_gravity():
 	if is_on_floor() and velocity.y > 0:
 		is_jumping = false
-		velocity.y = 0;
+		velocity.y = 0
+	elif is_on_ceiling():
+		velocity.y = 1
 	else:
 		velocity.y += GRAVITY
 		
